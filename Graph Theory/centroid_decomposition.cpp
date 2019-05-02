@@ -19,5 +19,5 @@ void centroid_decomposition(int u) {
     // Do stuffs here
     elim[root] = true;
     for (int v : adj[root])
-        if (!elim[v]) centroid_decomposition(v, c + 1);
+        if (!elim[v]) centroid_decomposition(v);
 }
