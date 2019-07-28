@@ -14,5 +14,5 @@ pair < LL, LL > extended_gcd(LL a, LL b) {
 
 LL inverse_modulo(LL a, LL m) {
     pair < LL, LL > xy = extended_gcd(a, m);
-    return (xy.first + modP) % modP;
+    return (xy.first + m) % m;
 }
