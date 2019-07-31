@@ -7,11 +7,10 @@
 // =>   x = y1, y = x1 - q * y1
 fn extended_gcd(a: i64, b: i64) -> (i64, i64) {
     if b == 0 {
-        (1, 0)
-    } else {
-        let (x, y) = extended_gcd(b, a % b);
-        (y, x - (a / b) * y)
+        return (1, 0);
     }
+    let (x, y) = extended_gcd(b, a % b);
+    (y, x - (a / b) * y)
 }
 
 fn inverse_modulo(a: i64, m: i64) -> i64 {
