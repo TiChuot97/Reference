@@ -49,7 +49,8 @@ the two following types:
 >   * ![type1](https://latex.codecogs.com/gif.latex?C%20%5Ctextit%7B%20%7D%20i%20%5Ctextit%7B%20%7D%20x%3A)
   Change the value of *a_i* to *x*
 >   * ![type2](https://latex.codecogs.com/gif.latex?S%20%5Ctextit%7B%20%7D%20l%20%5Ctextit%7B%20%7D%20r%3A)
-  Compute the sum ![sum](https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%20%3D%20l%7D%5Er%20a_i%20%3D%20a_l%20&plus;%20a_%7Bl%20&plus;%201%7D%20&plus;%20...%20&plus;%20a_%7Br%20-%201%7D%20&plus;%20a_r)
+  Compute the sum
+> <p align="center"><img src="https://latex.codecogs.com/gif.latex?%5Csum_%7Bi%20%3D%20l%7D%5Er%20a_i%20%3D%20a_l%20&plus;%20a_%7Bl%20&plus;%201%7D%20&plus;%20...%20&plus;%20a_%7Br%20-%201%7D%20&plus;%20a_r"></p>
 
 ## Naive solution
 
@@ -81,11 +82,18 @@ queries. This is where Segment Tree comes to the rescue!
 
 ### Structure
 
-So, what exactly is Segment Tree? To keep things simple, let us denote ![Sij](https://latex.codecogs.com/gif.latex?S_%7Bi%2C%20j%7D%20%3D%20%5Csum_%7Bt%20%3D%20i%7D%5Ej%20a_t). To solve the above problem, the idea is that we compute and store the following sums of subarrays in a binary-tree-like structure:
+So, what exactly is Segment Tree? To keep things simple, let us denote
+
+<p align="center">
+  <img src="https://latex.codecogs.com/gif.latex?S_%7Bi%2C%20j%7D%20%3D%20%5Csum_%7Bt%20%3D%20i%7D%5Ej%20a_t">
+</p>
+
+To solve the above problem, the idea is that we compute and store the following sums of subarrays in a binary-tree-like structure:
   - The whole array: ![S1n](https://latex.codecogs.com/gif.latex?S_%7B1%2C%20n%7D)
   - The left and right halves of the array: ![S1](https://latex.codecogs.com/gif.latex?S_%7B1%2C%20%5Clfloor%7B%5Cfrac%7Bn%7D%7B2%7D%5Crfloor%7D%7D%2C%20S_%7B%5Clfloor%7B%5Cfrac%7Bn%7D%7B2%7D%5Crfloor%20&plus;%201%2C%20n%7D%7D).
   - The left and right halves of each of the above subarrays:
   ![subarrs](https://latex.codecogs.com/gif.latex?a_%7B1..%5Clfloor%5Cfrac%7Bn%7D%7B4%7D%5Crfloor%7D%2C%20a_%7B%5Clfloor%5Cfrac%7Bn%7D%7B4%7D%5Crfloor%20&plus;%201..%5Clfloor%5Cfrac%7Bn%7D%7B2%7D%5Crfloor%7D%2C%20a_%7B%5Clfloor%5Cfrac%7Bn%7D%7B2%7D%5Crfloor%20&plus;%201..%5Clfloor%5Cfrac%7B3n%7D%7B4%7D%5Crfloor%7D%2C%20a_%7B%5Clfloor%5Cfrac%7B3n%7D%7B4%7D%5Crfloor%20&plus;%201..n%7D)
+
   - ...
   - So on until the subarrays are of size ![1]
 
