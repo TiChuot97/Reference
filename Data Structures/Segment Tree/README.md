@@ -172,7 +172,7 @@ above example and a sum query
 
 ![figure4](./img/4.png)
 
-Firgure 4 colors the nodes that will be visited by the described algorithm, where green nodes represent nodes of first case and blue nodes represent nodes of
+Figure 4 colors the nodes that will be visited by the described algorithm, where green nodes represent nodes of first case and blue nodes represent nodes of
 third case (nodes of the second case can be ignored using a simple check).
 
 The last piece of the puzzle is to analyze the complexity of this algorithm. In
@@ -401,7 +401,7 @@ states of itself. In the case of Segment Tree, it is very simple to modify it
 so that it becomes a persistent data structure. Consider the simplest example
 of Segment Tree, whenever updating a value, we modify ![olog] nodes of the tree.
 Then, in Persistent Segment Tree, instead of modifying the nodes, we can create
-new versions of these nodes. Hence, we add at most ![ologn] nodes per query. To
+new versions of these nodes. Hence, we add at most ![olog] nodes per query. To
 do this efficiently, we can either allocate a pool of nodes globally or we can
 allocate them on heap and on demand (the code example below uses the former).
 ```cpp
