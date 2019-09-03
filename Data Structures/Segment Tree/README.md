@@ -121,15 +121,17 @@ obvious that the height of the tree is at most ![ceil_logn].
 Hence, the number of nodes of this tree is bounded by:
 
 <p align="center">
-  <img src="https://latex.codecogs.com/gif.latex?1%20&plus;%202%20&plus;%204%20&plus;%20%5Chdots%20&plus;%202%5E%7B%5Clceil%5Clog%20n%5Crceil%20-%201%7D%20&plus;%202%5E%7B%5Clceil%5Clog%20n%5Crceil%7D%20%3D%202%5E%7B%5Clceil%5Clog%20n%5Crceil%20&plus;%201%7D%20%3C%204n">
+  <img src="https://latex.codecogs.com/gif.latex?1%20&plus;%202%20&plus;%204%20&plus;%20%5Ccdots%20&plus;%202%5E%7B%5Clceil%5Clog%20n%5Crceil%20-%201%7D%20&plus;%202%5E%7B%5Clceil%5Clog%20n%5Crceil%7D%20%3D%202%5E%7B%5Clceil%5Clog%20n%5Crceil%20&plus;%201%7D%20-%201%20%3C%204n">
 </p>
 
 ### Update query
 
 Now that we know how Segment Tree is structured, how do we apply it solve the
 problem in hand? We will first deal with how to update the tree when an element
-of the array changes. First, let us look at one specific example with the
-following array ![arr_ex](https://latex.codecogs.com/gif.latex?a%20%3D%20%5B2%2C%203%2C%205%2C%207%2C%201%2C%205%5D).
+of the array changes. We can see that, when performing an update query, most of the nodes in our Segment Tree remain unaffected. Hence, it would be a lot faster if
+we can identify the affected nodes and leave the others untouched. Let us look
+at one specific example with the following array
+![arr_ex](https://latex.codecogs.com/gif.latex?a%20%3D%20%5B2%2C%203%2C%205%2C%207%2C%201%2C%205%5D).
 The Segment Tree for the given array will look as followed:
 
 ![figure2](./img/2.png)
@@ -273,9 +275,9 @@ this technique is that we only update the nodes of the tree once we need them.
 We store the amount should be added to a node in `lazy[]`. Then, the `update`
 and `get` functions can be modified as followed:
 ```cpp
-// Update query: a[i] = val
+// Update query: a[x] += val for all x in [i : j]
 void update(int k, int l, int r, int i, int j, int val) {
-    if (i < l || i > r) return;
+    if (j < l || i > r) return;
     if (i <= l && r <= j) {
         lazy[k] += val;
         return;
@@ -442,3 +444,9 @@ int update(int k, int l, int r, int i, int v) {
     return K;
 }
 ```
+
+## Practice problems
+
+- Basic Segment Tree: https://leetcode.com/problems/range-sum-query-mutable
+- 2D Segment Tree: http://poj.org/problem?id=1195
+- Persistent Segment Tree: http://www.spoj.com/problems/MKTHNUM/
